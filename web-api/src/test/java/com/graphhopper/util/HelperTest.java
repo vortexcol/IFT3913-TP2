@@ -32,6 +32,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class HelperTest {
 
     @Test
+    public void createPointList3DTest() {
+        PointList res = new PointList(2, true);
+        res.add(2.0, 3.4, 5.6);
+        res.add(5.68, 38.2, 24.5);
+
+        assertEquals(res, Helper.createPointList3D(2.0, 3.4, 5.6, 5.68, 38.2, 24.5));
+
+        // On vérifie qu'une erreur est levée si le nombre d'argument n'est pas 
+        // un multiple de 3
+        assertThrows(IllegalArgumentException.class, () -> {
+            Helper.createPointList3D(5.8, 2.9, 3.4, 5.6);
+        });
+    }
+
+    @Test
     public void testElevation() {
         assertEquals(9034.1, Helper.uIntToEle(Helper.eleToUInt(9034.1)), .1);
         assertEquals(1234.5, Helper.uIntToEle(Helper.eleToUInt(1234.5)), .1);
