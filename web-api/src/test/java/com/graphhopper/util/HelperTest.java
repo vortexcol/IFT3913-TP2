@@ -72,6 +72,12 @@ public class HelperTest {
     }
 
     @Test
+    public void testToObject() {
+        assertEquals("a123b5", Helper.toObject("a123b5"));
+        assertEquals(true, Helper.toObject("true"));
+    }
+
+    @Test
     public void testCamelCaseToUnderscore() {
         assertEquals("test_case", Helper.camelCaseToUnderScore("testCase"));
         assertEquals("test_case_t_b_d", Helper.camelCaseToUnderScore("testCaseTBD"));
