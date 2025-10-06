@@ -19,6 +19,7 @@ package com.graphhopper.util;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Locale;
 
 import static com.graphhopper.util.Helper.UTF_CS;
@@ -84,6 +85,13 @@ public class HelperTest {
         assertEquals("testCase", Helper.underScoreToCamelCase("test_case"));
         assertEquals("testCaseTBD", Helper.underScoreToCamelCase("test_case_t_b_d"));
         assertEquals("TestCase_", Helper.underScoreToCamelCase("_test_case_"));
+    }
+
+    @Test
+    public void testParseList() {
+        assertEquals(List.of(), Helper.parseList(""));
+        assertEquals(List.of(), Helper.parseList("[]"));
+        assertEquals(List.of("a", "b", "cd"), Helper.parseList("[a,b,cd]"));
     }
 
     @Test
