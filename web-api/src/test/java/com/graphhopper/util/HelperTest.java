@@ -32,13 +32,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class HelperTest {
 
     @Test
-    public void createPointList3DTest() {
+    public void creerPointList3D_avecCoordonneesValides_retourneListeAttendue() {
         PointList res = new PointList(2, true);
         res.add(2.0, 3.4, 5.6);
         res.add(5.68, 38.2, 24.5);
 
         assertEquals(res, Helper.createPointList3D(2.0, 3.4, 5.6, 5.68, 38.2, 24.5));
-
+    }
+ 
+    @Test
+    public void creerPointList3D_avecNombreInvalideDeCoordonnees_declencheIllegalArgumentException() {
         // On vérifie qu'une erreur est levée si le nombre d'argument n'est pas 
         // un multiple de 3
         assertThrows(IllegalArgumentException.class, () -> {
@@ -87,8 +90,12 @@ public class HelperTest {
     }
 
     @Test
-    public void testToObject() {
+    public void toObject_avecChaineValide_retourneMemeChaine() {
         assertEquals("a123b5", Helper.toObject("a123b5"));
+    }
+
+    @Test
+    public void toObject_avecChaineTrue_retourneBooleenTrue() {
         assertEquals(true, Helper.toObject("true"));
     }
 
@@ -109,10 +116,18 @@ public class HelperTest {
     }
 
     @Test
-    public void testParseList() {
-        assertEquals(List.of(), Helper.parseList(""));
-        assertEquals(List.of(), Helper.parseList("[]"));
+    public void parseList_avecCrochetsVidesEtEspaces_retourneListeVide() {
+        assertEquals(List.of(), Helper.parseList("  [  ]   "));
+    }
+
+    @Test
+    public void parseList_avecPlusieursElements_retourneListeCorrecte() {
         assertEquals(List.of("a", "b", "cd"), Helper.parseList("[a,b,cd]"));
+    }
+
+    @Test
+    public void parseList_avecChaineVide_retourneListeVide() {
+        assertEquals(List.of(), Helper.parseList(""));
     }
 
     @Test
