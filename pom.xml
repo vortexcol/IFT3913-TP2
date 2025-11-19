@@ -61,8 +61,20 @@
    </modules>
    <dependencyManagement>
       <dependencies>
-         <!-- provides compatible versions for jackson, guava, slf4j etc. -->
-         <dependency>
+         <!-- provides compatible versions for jackson, guava, slf4j etc. -->  
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.14.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.14.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-dependencies</artifactId>
             <version>4.0.16</version>
@@ -209,9 +221,16 @@
                <version>1.8</version>
             </plugin>
             <plugin>
-               <groupId>org.pitest</groupId>
-               <artifactId>pitest-maven</artifactId>
-               <version>1.15.8</version>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.15.8</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.pitest</groupId>
+                            <artifactId>pitest-junit5-plugin</artifactId>
+                            <version>1.2.1</version>
+                        </dependency>
+                    </dependencies>
                <!-- or a current version -->
                <configuration>
                   <!-- Restrict to some packages to keep runtime reasonable -->
