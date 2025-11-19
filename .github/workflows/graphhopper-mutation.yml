@@ -50,4 +50,4 @@ jobs:
           # fun message shown in the action logs
           message: |
             Your GraphHopper tests failed…
-            But we’re never gonna give you up 🎶
+            But we’re never gonna give you up
