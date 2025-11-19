@@ -2,7 +2,7 @@ package com.graphhopper.resources;
 
 import com.graphhopper.GHRequest;
 import com.graphhopper.GHResponse;
-import com.graphhopper.GraphHopperAPI;
+import com.graphhopper.GraphHopper;
 import com.graphhopper.routing.ProfileResolver;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,7 +29,7 @@ import static org.mockito.Mockito.*;
 class RouteResourceTest {
 
     @Mock
-    private GraphHopperAPI graphHopper;
+    private GraphHopper graphHopper;
 
     @Mock
     private ProfileResolver profileResolver;
