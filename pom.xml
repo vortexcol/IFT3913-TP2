@@ -232,7 +232,7 @@
                         </dependency>
                     </dependencies>
                <!-- or a current version -->
-               <configuration>
+                    <configuration>
                   <!-- Restrict to some packages to keep runtime reasonable -->
                   <targetClasses>
                      <param>com.graphhopper.routing.weighting.*</param>

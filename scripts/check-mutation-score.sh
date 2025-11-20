@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "=== Running PIT on graphhopper-core ==="
-# -pl core : only run on the core module
-# -am      : also build required modules (web-api, etc.) if needed
-mvn -q -pl core -am org.pitest:pitest-maven:mutationCoverage
+# always run from repo root
+cd "$(dirname "$0")/.."
 
-REPORT="core/target/pit-reports/index.html"
+echo "=== Running PIT on graphhopper-web-api ==="
+mvn -pl web-api -am org.pitest:pitest-maven:mutationCoverage
+
+REPORT="web-api/target/pit-reports/index.html"
 
 if [ ! -f "$REPORT" ]; then
   echo "❌ PIT report not found at $REPORT"
@@ -45,4 +46,3 @@ awk -v cur="$CURRENT_SCORE" -v min="$MIN_MUTATION_SCORE" '
     }
   }
 '
-
