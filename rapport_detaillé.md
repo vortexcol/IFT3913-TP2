@@ -2,8 +2,6 @@
 
 ## 1. Contexte et objectifs
 
-Ce travail pratique vise à intégrer le **mutation testing** avec **PIT** dans le projet GraphHopper (forké dans le dépôt `IFT3913-TP2`), et à :
-
 - faire **échouer le build** si le score de mutation diminue après un commit ;
 - **ajouter des tests unitaires** basés sur **JUnit 5** et **Mockito** ;
 - documenter les **choix de conception** (classes testées, mocks, valeurs simulées, configuration de PIT et de GitHub Actions) ;
@@ -277,24 +275,3 @@ SUCCESS        FAILURE + Rickroll 🎵
 Le Rickroll est implémenté via une action réutilisable (par ex. `random-rickroll`) déclenchée uniquement si le job de mutation testing échoue. Cela apporte une touche humoristique tout en rendant l’échec très visible pour le développeur.
 
 ---
-
-## 7. Discussion et limites
-
-- L’utilisation de PIT uniquement sur `web-api` est un **compromis pragmatique** : c’est là que les tests existants sont détectés et exécutés par PIT.
-- Les nouveaux tests Mockito pour `SpeedWeighting` et `QueryGraphWeighting` augmentent la robustesse du module `core`, et pourraient être inclus dans PIT si la configuration de détection est améliorée.
-- Le mutation testing est coûteux en temps ; limiter l’analyse à un module permet de garder la CI raisonnablement rapide tout en obtenant un vrai signal sur la qualité des tests.
-
----
-
-## 8. Conclusion
-
-Ce travail a permis de :
-
-- renforcer la suite de tests de GraphHopper via des tests JUnit 5 + Mockito ciblés ;
-- intégrer **PIT Mutation Testing** dans le pipeline d’intégration continue ;
-- automatiser la vérification du score de mutation avec un script Bash et une baseline configurable ;
-- faire échouer le build en cas de régression de la qualité des tests ;
-- ajouter un Rickroll humoristique lors des échecs.
-
-L’ensemble respecte les exigences du TP IFT3913 en matière de qualité logicielle, couverture de tests et intégration continue.
-
